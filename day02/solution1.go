@@ -1,6 +1,7 @@
 package main
 
 import (
+	"adventofcode2024/utils"
 	"bufio"
 	"fmt"
 	"os"
@@ -8,23 +9,10 @@ import (
 	"strings"
 )
 
-func abs(x int) int {
-	if x >= 0 {
-		return x
-	}
-	return -x
-}
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
 
 	file, err := os.Open("input.txt")
-	check(err)
+	utils.Check(err)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -37,7 +25,7 @@ func main() {
 		numbers := strings.Split(line, " ")
 		for i := 0; i < len(numbers); i++ {
 			report, err := strconv.Atoi(numbers[i])
-			check(err)
+			utils.Check(err)
 			reports = append(reports, report)
 		}
 
@@ -48,7 +36,7 @@ func main() {
 		for i := 1; i < len(reports); i++ {
 			difference := reports[i] - reports[i-1]
 			// Use XOR to avoid multiplying
-			if (abs(difference) == 0 || abs(difference) > 3) || difference^direction < 0 {
+			if (utils.Abs(difference) == 0 || utils.Abs(difference) > 3) || difference^direction < 0 {
 				safe = false
 				break
 			}

@@ -1,16 +1,11 @@
 package main
 
 import (
+	"adventofcode2024/utils"
 	"bufio"
 	"fmt"
 	"os"
 )
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
 
 func checkForMas(letters []string, row, col int) bool {
 	if row < 1 || row > len(letters)-2 {
@@ -30,7 +25,7 @@ func checkForMas(letters []string, row, col int) bool {
 func main() {
 
 	file, err := os.Open("input.txt")
-	check(err)
+	utils.Check(err)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)

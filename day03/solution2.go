@@ -1,22 +1,17 @@
 package main
 
 import (
+	"adventofcode2024/utils"
 	"bufio"
 	"fmt"
 	"os"
 	"regexp"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
 
 	file, err := os.Open("input.txt")
-	check(err)
+	utils.Check(err)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)

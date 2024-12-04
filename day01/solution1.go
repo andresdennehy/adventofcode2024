@@ -1,6 +1,7 @@
 package main
 
 import (
+	"adventofcode2024/utils"
 	"bufio"
 	"fmt"
 	"os"
@@ -9,23 +10,10 @@ import (
 	"strings"
 )
 
-func abs(x int) int {
-	if x >= 0 {
-		return x
-	}
-	return -x
-}
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
 
 	file, err := os.Open("input.txt")
-	check(err)
+	utils.Check(err)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -48,7 +36,7 @@ func main() {
 	slices.Sort(rightList)
 
 	for i, _ := range leftList {
-		result += abs(leftList[i] - rightList[i])
+		result += utils.Abs(leftList[i] - rightList[i])
 	}
 	fmt.Printf("Result is %v\n", result)
 }
