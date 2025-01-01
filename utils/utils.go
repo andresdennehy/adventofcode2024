@@ -31,3 +31,12 @@ func Check(e error) {
 		panic(e)
 	}
 }
+
+func IsIn(value string, list []string) bool {
+	for _, str := range list {
+		if value == str {
+			return true
+		}
+	}
+	return false
+}
